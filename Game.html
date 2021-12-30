@@ -1,0 +1,104 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col ">
+                <div class="align-self-end" style="height: 500px; width: auto; ">
+                    <center>
+                        <img id="pphp" src="https://www.sideshow.com/storage/product-images/904685/captain-america__silo.png" style="height: 100%; width: auto;">
+                    </center>
+                </div>
+                <div class="progress">
+                    <div id="playerhp" class="progress-bar bg-success " role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="align-bottom" style="height: 500px; width: auto;">
+                    <center>
+                        <img id="pbhp" src="https://cs.lnwfile.com/7jwklq.png" style="height: 100%; width: auto; ">
+
+                    </center>
+                </div>
+                <div class="progress">
+                    <div id="bothp" class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <center>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-success btn-lg m-2" onclick="reset()">Start</button>
+                    <button type="button" class="btn btn-warning btn-lg m-2" onclick="attack()">Attack</button>
+                    <button type="button" class="btn btn-danger btn-lg m-2" onclick="spacialAttack()">Spacial Attack</button>
+                </div>
+            </center>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        var player = 100;
+        var bot = 100;
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function sethp(playerHP, botHP) {
+            document.getElementById("playerhp").style.width = `${playerHP}%`;
+            document.getElementById("bothp").style.width = `${botHP}%`;
+            document.getElementById("pphp").style.height = `${playerHP}%`;
+            document.getElementById("pbhp").style.height = `${botHP}%`;
+
+
+        }
+
+        function changeHP(playerHP, botHP) {
+            if (playerHP <= 0 || botHP <= 0) {
+                if (playerHP <= 0) {
+                    sethp(0, botHP)
+                    alert("You Loss");
+                } else {
+                    sethp(playerHP, 0);
+                    alert("You Win");
+                }
+
+            } else {
+                sethp(playerHP, botHP);
+            }
+
+        }
+
+        function attack() {
+            player -= getRndInteger(5, 15);
+            bot -= getRndInteger(3, 10);
+            console.log('player,bot :>> ', player, bot);
+            changeHP(player, bot);
+        }
+
+        function spacialAttack() {
+            player -= getRndInteger(5, 15);
+            bot -= getRndInteger(10, 20);
+            console.log('player,bot :>> ', player, bot);
+            changeHP(player, bot);
+        }
+
+        function reset() {
+            player = 100;
+            bot = 100;
+            sethp(player, bot)
+        }
+    </script>
+</body>
+
+</html>

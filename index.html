@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" onkeypress="clicked()" onkeydown="mouseDown()" onkeyup="mouseUp()" onclick="clicked()" onmousedown="mouseDown()" onmouseup="mouseUp()">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Popcat</title>
+</head>
+
+<body style="background-color: blueviolet;">
+    <audio id="myAudio">
+        <source src="./sound/mixkit-arcade-game-jump-coin-216.wav" type="audio/wav">
+      </audio>
+    <center>
+        <div id="count" style="font-size: 50px; color: white;">0</div>
+        <div class="img" style="height: 600px; width: 450px;">
+            <img id="pic" src="./images/catnoclick.jpeg" style="width: 100%; height: 100%;">
+        </div>
+    </center>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script language='javascript'>
+        document.onselectstart = new Function('return false');
+
+        function ds(e) {
+            return false;
+        }
+
+        function ra() {
+            return true;
+        }
+        document.onmousedown = ds;
+        document.onclick = ra;
+        document.oncontextmenu = function() {
+            return false
+        };
+        var count = 0;
+        var soundclick = document.getElementById("myAudio");
+
+        function clicked() {
+            count++;
+            soundclick.play();
+            document.getElementById("count").innerText = count;
+
+        }
+
+        function mouseDown() {
+            document.getElementById("pic").src = "./images/catclick.png"
+            if (count >= 5) {
+                document.getElementById("count").style.color = "red";
+            } else {
+
+            }
+
+
+        }
+
+        function mouseUp() {
+            document.getElementById("pic").src = "./images/catnoclick.jpeg"
+
+
+        }
+    </script>
+    <script language='JavaScript'>
+        if (top.location != self.location) {
+            top.location = self.location
+        }
+    </script>
+
+</body>
+
+</html>
